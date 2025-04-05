@@ -3,12 +3,7 @@ const jwt = require("jsonwebtoken");
 let books = require("./booksdb.js");
 const regd_users = express.Router();
 
-let users = [
-  {
-    username: "max",
-    password: "books0192",
-  },
-];
+let users = [];
 
 const isValid = (username) => {
   if (!username || users.find((user) => user.username == username)) {
@@ -23,7 +18,7 @@ const authenticatedUser = (username, password) => {
   );
 };
 
-//only registered users can login
+// Only registered users can login
 regd_users.post("/login", (req, res) => {
   const { username, password } = req.body;
 
